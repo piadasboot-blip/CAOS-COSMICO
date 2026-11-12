@@ -1,0 +1,12 @@
+{
+  "appId": "com.vibe.social3d",
+  "appName": "VIBE",
+  "webDir": "public",
+  "server": {
+    "url": "https://caos-cosmico.onrender.com",
+    "androidScheme": "https",
+    "errorPath": "offline.html",
+    "allowNavigation": ["caos-cosmico.onrender.com"]
+  },
+  "android": { "allowMixedContent": false, "backgroundColor": "#0e0d12" }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "vibe-social-3d",
+  "version": "0.1.0",
+  "description": "VIBE: rede social 3D com avatares, salas com chat, loja e feed",
+  "private": true,
+  "main": "server/server.js",
+  "scripts": { "start": "node server/server.js", "test": "node test/servidor.test.js" },
+  "dependencies": { "ws": "^8.18.0" },
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0a0420">
+<title>VIBE</title>
+<link rel="icon" href="icone.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="tres"></div>
+
+<!-- carregando -->
+<div id="carga" class="tela cheia"><div class="logo-g"><span class="nm"></span></div><div class="pontinhos"><i></i><i></i><i></i></div><p>Carregando…</p></div>
+
+<!-- escolha do primeiro visual -->
+<section id="tBoas" class="tela" hidden>
+  <h1 class="titulo-topo">ESCOLHA SEU PRIMEIRO VISUAL</h1>
+  <div class="rodape-boas">
+    <p class="dica-faixa">Crie sua conta e personalize seu avatar como quiser!</p>
+    <div id="iniciais" class="iniciais"></div>
+    <button class="bt-ouro" id="btProximo">PRÓXIMO</button>
+    <p class="ja-tem"><span class="logo-p nm"></span> Já possui uma conta? <a href="#" id="lkEntrar">Entrar</a></p>
+  </div>
+</section>
+
+<!-- criar conta -->
+<section id="tCadastro" class="tela pagina form-pg" hidden>
+  <header class="cab"><button class="voltar" data-voltar="tBoas" aria-label="Voltar">←</button><h2>CRIAR CONTA</h2></header>
+  <div class="boas-linha"><img id="cadFoto" class="foto-redonda grande" alt=""><p>Bem-vindo ao <b class="nm"></b>!</p></div>
+  <div class="promo">🪙 Receba <b id="promoN">150</b> créditos só por se cadastrar!</div>
+  <form id="fCadastro" autocomplete="on">
+    <label>NOME DE EXIBIÇÃO<input id="cNome" maxlength="20" autocomplete="nickname" required></label>
+    <label>EMAIL<input id="cEmail" type="email" autocomplete="email" required></label>
+    <label>SENHA<input id="cSenha" type="password" minlength="6" autocomplete="new-password" required></label>
+    <label>DATA DE NASCIMENTO<input id="cNasc" type="date" required></label>
+    <p class="erro" id="cErro"></p>
+    <button class="bt-ouro" id="btCadastrar">CADASTRAR-SE</button>
+    <p class="mini-txt">Somente maiores de 18 anos. Ao criar a conta você aceita as regras: sem nudez ou conteúdo sexual, sem assédio, sem ofensas. Quem quebrar as regras pode ser denunciado e suspenso.</p>
+  </form>
+</section>
+
+<!-- entrar -->
+<section id="tLogin" class="tela pagina form-pg" hidden>
+  <header class="cab"><button class="voltar" data-voltar="tBoas" aria-label="Voltar">←</button><h2>ENTRAR</h2></header>
+  <form id="fLogin" autocomplete="on">
+    <label>EMAIL<input id="lEmail" type="email" autocomplete="email" required></label>
+    <label>SENHA<input id="lSenha" type="password" autocomplete="current-password" required></label>
+    <p class="erro" id="lErro"></p>
+    <button class="bt-ouro" id="btEntrar">✉ ENTRAR</button>
+    <p class="mini-txt centro">Ainda não tem conta? <a href="#" id="lkCriar">Criar conta</a></p>
+  </form>
+</section>
+
+<!-- aplicativo -->
+<div id="app" hidden>
+  <!-- início -->
+  <section id="pInicio" class="pg transparente">
+    <div class="moedas-col">
+      <button class="pilula" data-ir="pLoja"><i class="moeda">C</i><b id="iCred">0</b><span>+</span></button>
+      <button class="pilula verde" id="btBonus"><i class="presente">🎁</i><b>GRÁTIS</b></button>
+    </div>
+    <button class="presente-roleta" id="btRoleta" aria-label="Giro diário">🎁<em id="rolMarca" hidden>1</em></button>
+    <button class="eu-mini" id="btMeuPerfil" aria-label="Meu perfil"><img id="iFoto" alt=""></button>
+    <div class="cartao-inicio">
+      <div class="abas3"><button class="on" data-aba="vestir">VISTA-SE</button><button data-aba="amizade">AMIZADE</button><button data-aba="recomp">RECOMPENSAS</button></div>
+      <div class="acoes" id="acoesInicio"></div>
+    </div>
+  </section>
+
+  <!-- feed -->
+  <section id="pFeed" class="pg" hidden>
+    <header class="cab-pg"><h2>FEED</h2></header>
+    <div class="abas2"><button class="on" data-feed="seguindo">Seguindo</button><button data-feed="descubra">Descubra</button></div>
+    <div class="compor"><button id="btTexto">✎<span>TEXTO</span></button><button id="btFoto3d">📷<span>FOTO 3D</span></button></div>
+    <div id="listaFeed" class="lista-feed"></div>
+  </section>
+
+  <!-- salas -->
+  <section id="pSalas" class="pg" hidden>
+    <header class="cab-pg"><h2>CHAT</h2></header>
+    <div class="busca"><input id="busca" placeholder="Procurar pessoas" autocomplete="off"><div id="resBusca"></div></div>
+    <h3 class="sec-t">✦ SALAS EM DESTAQUE</h3>
+    <div id="salasDest" class="carrossel"></div>
+    <h3 class="sec-t"># TODAS AS SALAS</h3>
+    <div id="salasTodas" class="grade-salas"></div>
+  </section>
+
+  <!-- guarda-roupa -->
+  <section id="pVestir" class="pg transparente" hidden>
+    <header class="cab-pg vidro"><h2>MUDAR VISUAL</h2><button class="bt-ouro mini" id="btSalvarVisual">SALVAR</button></header>
+    <div class="painel-vestir">
+      <div class="cats" id="catsVestir"></div>
+      <div id="opcoesVestir" class="opcoes"></div>
+    </div>
+  </section>
+
+  <!-- notificações -->
+  <section id="pNotif" class="pg" hidden>
+    <header class="cab-pg"><h2>NOTIFICAÇÕES</h2></header>
+    <div id="listaNotif" class="lista-notif"></div>
+  </section>
+
+  <!-- loja -->
+  <section id="pLoja" class="pg" hidden>
+    <header class="cab-pg"><h2>SHOP</h2></header>
+    <div class="linha-moedas"><span class="pilula fixa"><i class="moeda">C</i><b id="lCred">0</b></span><button class="pilula verde" id="btBonus2"><i class="presente">🎁</i><b>GRÁTIS</b></button></div>
+    <div class="chips" id="chipsLoja"></div>
+    <div id="gradeLoja" class="grade-loja"></div>
+  </section>
+
+  <!-- perfil -->
+  <section id="pPerfil" class="pg" hidden>
+    <div class="capa-perfil" id="pfCapa"><button class="fechar-x" id="btFecharPerfil" aria-label="Fechar">✕</button><button class="engrenagem" id="btEditarPerfil" aria-label="Editar perfil" hidden>⚙</button><img id="pfCorpo" alt=""></div>
+    <div class="pf-linha"><div class="pf-foto"><img id="pfRosto" class="foto-redonda grande" alt=""><i id="pfBolinha" hidden></i></div><div class="pf-nome"><b id="pfNome"></b><span id="pfOnline"></span></div><div id="pfBotoes" class="pf-botoes"></div></div>
+    <div class="contagem"><div><b id="pfSeg">0</b>Seguidores</div><div><b id="pfSeguindo">0</b>Seguindo</div><div><b id="pfAmigos">0</b>Amigos</div></div>
+    <p id="pfBio" class="bio"></p>
+    <div class="abas2" id="pfAbas"><button class="on" data-pfaba="sobre">Sobre</button><button data-pfaba="posts">Postagens</button></div>
+    <div id="pfSobre" class="pf-sobre"></div>
+    <div id="pfPosts" class="lista-feed" hidden></div>
+  </section>
+
+  <!-- editar perfil -->
+  <section id="pEditar" class="pg editar" hidden>
+    <header class="cab-ed"><button class="voltar" id="edVoltar" aria-label="Voltar">‹</button><h2>Editar o Perfil</h2><button class="salvar" id="edSalvar">SALVAR</button></header>
+    <button class="ed-item" id="edFoto"><img id="edFotoImg" class="foto-redonda" alt=""><span>Trocar imagem do perfil</span></button>
+    <button class="ed-item" id="edTema"><span class="bola-tema" id="edTemaBola"></span><span>Alterar aparência do perfil</span><em>›</em></button>
+    <div class="ed-rotulo">NOME</div><input id="edNome" class="ed-campo" maxlength="20"><div class="ed-conta" id="edNomeN">0/20</div>
+    <div class="ed-rotulo">BIO</div><textarea id="edBio" class="ed-campo" maxlength="100" rows="2"></textarea><div class="ed-conta" id="edBioN">0/100</div>
+    <button class="ed-item" id="edTags"><span>Editar hashtag</span><em id="edTagsN">0 ›</em></button>
+    <button class="ed-item duplo" data-opc="sexo"><span>Sexo</span><small id="edSexo"></small></button>
+    <button class="ed-item duplo" data-opc="pais"><span>País</span><small id="edPais"></small></button>
+    <button class="ed-item duplo" data-opc="rel"><span>Relacionamento</span><small id="edRel"></small></button>
+    <button class="ed-item duplo" data-opc="aqui"><span>Aqui por</span><small id="edAqui"></small></button>
+    <label class="ed-item chave"><span>Mostrar status online</span><input type="checkbox" id="edOnline"><i></i></label>
+    <label class="ed-item chave"><span>Mostrar a sala onde estou<small>Seus amigos podem entrar na mesma sala</small></span><input type="checkbox" id="edSala"><i></i></label>
+    <label class="ed-item chave"><span>Mostrar idade</span><input type="checkbox" id="edIdade"><i></i></label>
+    <label class="ed-item chave"><span>Mostrar sexo</span><input type="checkbox" id="edSexoM"><i></i></label>
+  </section>
+
+  <nav class="barra" id="barra">
+    <button data-ir="pInicio" class="on" aria-label="Início"><i class="ic ic-casa"></i></button>
+    <button data-ir="pFeed" aria-label="Feed"><i class="ic ic-feed"></i></button>
+    <button data-ir="pSalas" aria-label="Salas"><i class="ic ic-chat"></i></button>
+    <button data-ir="pVestir" aria-label="Mudar visual"><i class="ic ic-roupa"></i></button>
+    <button data-ir="pNotif" aria-label="Notificações"><i class="ic ic-sino"></i><em id="nNotif" hidden></em></button>
+    <button data-ir="pLoja" aria-label="Loja"><i class="ic ic-sacola"></i></button>
+  </nav>
+</div>
+
+<!-- dentro da sala -->
+<section id="tSala" hidden>
+  <header class="cab-sala"><button class="voltar" id="btSairSala" aria-label="Sair da sala">←</button><h2 id="salaNome">Sala</h2><span id="salaN" class="sala-n"></span><button class="ic-bt" id="btFotoSala" aria-label="Tirar foto">📷</button><button class="ic-bt" id="btMenuSala" aria-label="Menu">⋮</button></header>
+  <p class="dica-sala" id="dicaSala">Toque na tela para ver onde ir · use 2 dedos para zoom</p>
+  <div id="emotes" class="emotes" hidden></div>
+  <div id="chatSala" class="chat-sala">
+    <button class="puxador" id="btPuxar" aria-label="Abrir conversa"><i></i></button>
+    <ul id="logSala"></ul>
+    <form id="fFala" class="barra-fala"><button type="button" class="emo" id="btEmo" aria-label="Emotes">☺</button><input id="txtFala" maxlength="160" placeholder="Diga algo…" autocomplete="off" enterkeyhint="send"><button class="enviar" aria-label="Enviar">➤</button></form>
+  </div>
+</section>
+
+<!-- roleta diária -->
+<section id="tRoleta" class="roleta" hidden>
+  <button class="fechar-x" id="rolFechar" aria-label="Fechar">✕</button>
+  <h1><span>GIRO</span> DIÁRIO</h1>
+  <div class="roda-caixa">
+    <div class="ponteiro"></div>
+    <canvas id="rolRoda" width="640" height="640"></canvas>
+    <button class="centro-roda" id="rolGirar" aria-label="Girar">?</button>
+  </div>
+  <p class="rol-dica" id="rolDica">Deslize ou toque para ganhar!</p>
+</section>
+
+<!-- janelas -->
+<div id="fundo" hidden></div>
+<div id="janela" class="janela" hidden></div>
+<div id="aviso" class="aviso"></div>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/GLTFLoader.js"></script>
+<script src="shared/base.js"></script>
+<script src="avatar.js"></script>
+<script src="cenario.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
